@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54130415536683460}
   - component: {fileID: 114225495589384436}
   - component: {fileID: 114898200463105860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TempCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4267540448645302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Toe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4465514105311658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4103044273981386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Shirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 224388864869124578}
   - component: {fileID: 222841629649587824}
   - component: {fileID: 114025450760584226}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 224921683538191298}
   - component: {fileID: 222137240923845620}
   - component: {fileID: 114608503644812844}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: SpeedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4293562651736308}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: scythe bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4315404610339500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751484071556932}
   - component: {fileID: 95574155333872912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Farmer_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 224398538796454178}
   - component: {fileID: 222657806639354472}
   - component: {fileID: 114331812813256040}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: DialogueBoxPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4666695929253628}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 224168538995856902}
   - component: {fileID: 222268085140915950}
   - component: {fileID: 114074782246467732}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224029113024272472}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4538048016147638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Mit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 223190568756379006}
   - component: {fileID: 114639238890468250}
   - component: {fileID: 114289127643812260}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: StatsPanelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 223256281393519250}
   - component: {fileID: 114690361753636512}
   - component: {fileID: 114606764920212386}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: PlayerUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4400117310938778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4178018053233744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4820249363865664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 224744521194189042}
   - component: {fileID: 222188911023783620}
   - component: {fileID: 114123058403402508}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: AttackValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4438261654439552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Clavical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4536505247573586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253600930814670}
   - component: {fileID: 137964918984194586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: scythe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4168021839688496}
   - component: {fileID: 137857797335807966}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4989855074718222}
   - component: {fileID: 137673650565535074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4637526660361788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 224855606351424780}
   - component: {fileID: 222631650767506128}
   - component: {fileID: 114208038064327616}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4279693625582058}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Neck_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4315747672305600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4051506906113592}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4589943976458602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4020678193031398}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Toe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4833980646740614}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Spine_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4177717620250046}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hait3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 224358314523328672}
   - component: {fileID: 222309630381849848}
   - component: {fileID: 114990719159369694}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4555061953783518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Clavival
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4662658687371228}
   - component: {fileID: 137287787229728434}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4514823903790658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 224069218604068334}
   - component: {fileID: 222919810119183264}
   - component: {fileID: 114392766508955550}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: PanelTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 224119544138861600}
   - component: {fileID: 222857929056840176}
   - component: {fileID: 114988413534498980}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4830183821555514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Spine_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 224015127573542968}
   - component: {fileID: 222938565162378982}
   - component: {fileID: 114899666380484366}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: FaceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 224267578702631664}
   - component: {fileID: 222452101841644996}
   - component: {fileID: 114298606628994302}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: ConversationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4825694786173174}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450309192764138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Left_Mit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4331892547520078}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,7 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4581802462997084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin_Right_Shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4978466873410164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hat2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 224370627197907876}
   - component: {fileID: 222829111968047036}
   - component: {fileID: 114215456060849952}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: DeffendValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224497096595686348}
   - component: {fileID: 114559542975024242}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056103622560156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hat_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056947873016360}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Erin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 224607448792763230}
   - component: {fileID: 222278444982813790}
   - component: {fileID: 114182450524312162}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Deffend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,7 +1260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024762974436704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -6.786}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4751484071556932}
@@ -1361,7 +1361,7 @@ Rigidbody:
   m_GameObject: {fileID: 1024762974436704}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1994,6 +1994,11 @@ MonoBehaviour:
   AttackDmg: 50
   Deffence: 50
   Speed: 300
+  AttackRange: 1.5
+  AttackRadius: 0.5
+  AttackingLayer:
+    serializedVersion: 2
+    m_Bits: 1025
 --- !u!114 &114289127643812260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2413,7 +2418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfdb0271aa03de4399de7f24a83f549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 300
+  MoveSpeed: 150
 --- !u!114 &114899666380484366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2507,7 +2512,7 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024762974436704}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ecb7f5a232bcf0249ba8e6b41e840ea1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

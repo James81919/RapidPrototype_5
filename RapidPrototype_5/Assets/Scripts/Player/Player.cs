@@ -12,9 +12,15 @@ public class Player : MonoBehaviour
 	public float AttackDmg = 50f;
 	public float Deffence = 50f;
 	public float Speed = 300f;
+    public float AttackRange = 3f;
+    public float AttackRadius = 1f;
 
-	// Player HUD ===================
-	private GameObject m_healthBarUI;
+    [Header("Config")]
+    public LayerMask AttackingLayer;
+
+
+    // Player HUD ===================
+    private GameObject m_healthBarUI;
 	// ==============================
 
 	// Player stats panel ===========
@@ -44,8 +50,8 @@ public class Player : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		// Set the health to full health
-		CurrHealth = TotalHealth;
+        // Set the health to full health
+        CurrHealth = TotalHealth;
 
 		// Hide the stats panel at the beginning
 		m_statsCanvas.SetActive(false);
@@ -61,7 +67,30 @@ public class Player : MonoBehaviour
 			StatsPanelOnOff();
 		}
 
+        if (Input.GetButtonDown("Attack"))
+        {
+            LightAttack();
+        }
+
 	}
+
+    private void LightAttack()
+    {
+        // Shoot out a ray infront of the player
+        Ray attackRay = new Ray(this.transform.position, this.transform.forward);
+
+        RaycastHit[] raycastHits;
+        // Cast out the ray as a sphere shape in the attack range
+        raycastHits = Physics.SphereCastAll(attackRay, AttackRadius, AttackRange, AttackingLayer, QueryTriggerInteraction.Ignore);
+        Debug.DrawRay(transform.position, transform.forward * AttackRange, Color.blue, 2f, false);
+
+        foreach (RaycastHit hitResult in raycastHits)
+        {
+            Debug.Log("Hit: " + hitResult.transform.gameObject.name);
+            // Do whatever the other object needs to be react
+            //hitResult.transform.GetComponent<>
+        }
+    }
 
 	private void UpdateHealthBar()
 	{
