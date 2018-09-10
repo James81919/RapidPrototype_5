@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33178428991496042}
   - component: {fileID: 23698688523865294}
   - component: {fileID: 65079913024997854}
+  - component: {fileID: 114673334563512654}
   m_Layer: 0
   m_Name: Shed
   m_TagString: Untagged
@@ -96,3 +97,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.714116, y: 9.166674, z: 7.3807864}
   m_Center: {x: -0.00000023841864, y: 4.583333, z: -0.0000014305118}
+--- !u!114 &114673334563512654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855460179383160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

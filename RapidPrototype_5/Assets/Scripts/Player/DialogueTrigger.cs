@@ -32,7 +32,6 @@ public class DialogueTrigger : MonoBehaviour {
     IEnumerator PopupDialogue(GameObject player)
     {
         player.GetComponent<PlayerMoveTemp>().enabled = false;
-        player.GetComponent<Rigidbody>().freezeRotation = true;
 
         dialogueBox.SetActive(true);
 
@@ -48,7 +47,6 @@ public class DialogueTrigger : MonoBehaviour {
         }
 
         dialogueBox.SetActive(false);
-        player.GetComponent<Rigidbody>().freezeRotation = false;
         player.GetComponent<PlayerMoveTemp>().enabled = true;
     }
 }
