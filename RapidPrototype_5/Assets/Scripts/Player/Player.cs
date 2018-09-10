@@ -28,10 +28,14 @@ public class Player : MonoBehaviour
 	private TextMeshProUGUI atkLabel;
 	private TextMeshProUGUI defLabel;
 	private TextMeshProUGUI spdLabel;
-	// ==============================
+    // ==============================
+
+    private Animator anim;
 
 	void Awake()
 	{
+        anim = GetComponentInChildren<Animator>();
+
 		// Reference the health UI
 		m_healthBarUI = 
 			transform.Find("PlayerUICanvas/PlayerHealthBar").gameObject;
@@ -84,6 +88,7 @@ public class Player : MonoBehaviour
         raycastHits = Physics.SphereCastAll(attackRay, AttackRadius, AttackRange, AttackingLayer, QueryTriggerInteraction.Ignore);
         Debug.DrawRay(transform.position, transform.forward * AttackRange, Color.blue, 2f, false);
 
+        anim.SetTrigger("Attack");
         foreach (RaycastHit hitResult in raycastHits)
         {
             Debug.Log("Hit: " + hitResult.transform.gameObject.name);
