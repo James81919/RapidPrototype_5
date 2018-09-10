@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
 
+    public bool isWandering;
     public float minXWanderDistance;
     public float maxXWanderDistance;
     public float minZWanderDistance;
@@ -18,9 +19,22 @@ public class EnemyMovement : MonoBehaviour {
         StartCoroutine(MoveToPos());
     }
 
-    private void Update()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if (other.tag == "Player")
+        {
+            isWandering = false;
+            agent.SetDestination(other.transform.position);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isWandering = true;
+            StartCoroutine(MoveToPos());
+        }
     }
 
     IEnumerator MoveToPos()
@@ -31,6 +45,10 @@ public class EnemyMovement : MonoBehaviour {
 
         agent.SetDestination(newPos);
         yield return new WaitForSeconds(3);
-        StartCoroutine(MoveToPos());
+
+        if (isWandering)
+        {
+            StartCoroutine(MoveToPos());
+        }
     }
 }

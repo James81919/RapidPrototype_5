@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54996504520713022}
   - component: {fileID: 195351245397100982}
   - component: {fileID: 114328782771436530}
+  - component: {fileID: 135726056422546054}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -146,6 +147,18 @@ MonoBehaviour:
   maxXWanderDistance: 100
   minZWanderDistance: -50
   maxZWanderDistance: 50
+--- !u!135 &135726056422546054
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268643757972336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136310599669035264
 CapsuleCollider:
   m_ObjectHideFlags: 1
