@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKillable, ICombatEntity
 {
 	[Header("Player Stat")]
 	public float TotalHealth = 100f;
@@ -50,8 +50,6 @@ public class Player : MonoBehaviour
 		spdLabel = m_statsCanvas.transform.
 			Find("AttackValue").gameObject.GetComponent<TextMeshProUGUI>();
 	}
-
-	// Use this for initialization
 	void Start()
 	{
         // Set the health to full health
@@ -60,8 +58,6 @@ public class Player : MonoBehaviour
 		// Hide the stats panel at the beginning
 		m_statsCanvas.SetActive(false);
 	}
-
-	// Update is called once per frame
 	void Update()
 	{
 		UpdateHealthBar();
@@ -102,14 +98,12 @@ public class Player : MonoBehaviour
             }
         }
     }
-
 	private void UpdateHealthBar()
 	{
 		// Set the health bar to current health by percentage
 		m_healthBarUI.GetComponent<Slider>().value =
 			CurrHealth / TotalHealth;
 	}
-
 	private void StatsPanelOnOff()
 	{
 		if (m_statsCanvas.activeSelf == false)
@@ -122,11 +116,47 @@ public class Player : MonoBehaviour
 			m_statsCanvas.SetActive(false);
 		}
 	}
-
 	private void UpdateStatsPanel()
 	{
 		atkLabel.SetText(AttackDmg.ToString());
 		defLabel.SetText(Deffence.ToString());
 		spdLabel.SetText(Speed.ToString());
 	}
+
+    /* Interface Implementation =================================*/
+
+    // IDamageable
+    public void TakeDamage(float _value)
+    {
+        CurrHealth -= _value;
+
+    }
+    public void CheckDeath()
+    {
+        if (CurrHealth <= 0f)
+        {
+            KillEntity();
+        }
+    }
+    public void KillEntity()
+    {
+        /// Do some code when the player dies
+    }
+    public bool IsAlive()
+    {
+        if (CurrHealth <= 0f)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    // ICombatEntity
+
+
+
+
+    // ============================================================
+
+
 }
