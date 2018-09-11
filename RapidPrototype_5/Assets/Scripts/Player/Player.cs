@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [Header("Config")]
     public LayerMask AttackingLayer;
 
+    public Inventory inventory;
+
 
     // Player HUD ===================
     private GameObject m_healthBarUI;
@@ -139,5 +141,13 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         CurrHealth -= damage;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Item") //If we collide with an item that we can pick up
+        {
+            inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+        }
     }
 }
