@@ -97,6 +97,7 @@ public class Player : MonoBehaviour, IKillable
         Debug.DrawRay(transform.position, transform.forward * AttackRange, Color.blue, 2f, false);
 
         m_animator.SetBool("IsAttacking", true);
+        yield return new WaitForSeconds(0.5f);
         foreach (RaycastHit hitResult in raycastHits)
         {
             Debug.Log("Hit: " + hitResult.transform.gameObject.name);
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour, IKillable
                 killableObj.TakeDamage(AttackDmg);
             }
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         m_animator.SetBool("IsAttacking", false);
         m_canLightAttack = true;
     }
