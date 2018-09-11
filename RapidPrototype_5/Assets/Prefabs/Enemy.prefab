@@ -19,68 +19,39 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906561565235588}
-  - component: {fileID: 54996504520713022}
+  - component: {fileID: 33269905032974058}
+  - component: {fileID: 23309624482304350}
+  - component: {fileID: 136284366328193162}
   - component: {fileID: 195351245397100982}
+  - component: {fileID: 54996504520713022}
   - component: {fileID: 114328782771436530}
-  - component: {fileID: 135726056422546054}
+  - component: {fileID: 135740459880365456}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1666587192734000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4878040867769194}
-  - component: {fileID: 33758865060637256}
-  - component: {fileID: 23413369651178912}
-  - component: {fileID: 136310599669035264}
-  m_Layer: 11
-  m_Name: Capsule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4878040867769194
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666587192734000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4906561565235588}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4906561565235588
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268643757972336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.298059, y: 1.18, z: -14.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4878040867769194}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23413369651178912
+--- !u!23 &23309624482304350
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666587192734000}
+  m_GameObject: {fileID: 1268643757972336}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -90,7 +61,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 10d7f00e610aa534980cb829c4e70558, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,12 +81,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33758865060637256
+--- !u!33 &33269905032974058
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666587192734000}
+  m_GameObject: {fileID: 1268643757972336}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54996504520713022
 Rigidbody:
@@ -143,11 +114,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07178271479ff94c9a2094ef42eb456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 0
+  attackSpeed: 0
+  maxHealth: 100
+  currHealth: 0
+  isWandering: 0
   minXWanderDistance: -100
   maxXWanderDistance: 100
   minZWanderDistance: -50
   maxZWanderDistance: 50
---- !u!135 &135726056422546054
+--- !u!135 &135740459880365456
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,14 +133,14 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 7.56
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136310599669035264
+--- !u!136 &136284366328193162
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666587192734000}
+  m_GameObject: {fileID: 1268643757972336}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

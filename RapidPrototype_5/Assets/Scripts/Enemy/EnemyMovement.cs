@@ -5,6 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
 
+    [Header("Stats")]
+    public float attackDamage;
+    public float attackSpeed;
+    public float maxHealth;
+    public float currHealth;
+
+    [Header("Movement")]
     public bool isWandering;
     public float minXWanderDistance;
     public float maxXWanderDistance;
@@ -17,6 +24,15 @@ public class EnemyMovement : MonoBehaviour {
     {
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(MoveToPos());
+        currHealth = maxHealth;
+    }
+
+    private void Update()
+    {
+        if (currHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -50,5 +66,18 @@ public class EnemyMovement : MonoBehaviour {
         {
             StartCoroutine(MoveToPos());
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currHealth -= damage;
+        StartCoroutine(DamageEffect());
+    }
+
+    IEnumerator DamageEffect()
+    {
+        GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
     }
 }

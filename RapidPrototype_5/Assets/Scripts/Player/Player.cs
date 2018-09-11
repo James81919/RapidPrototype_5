@@ -94,6 +94,12 @@ public class Player : MonoBehaviour
             Debug.Log("Hit: " + hitResult.transform.gameObject.name);
             // Do whatever the other object needs to be react
             //hitResult.transform.GetComponent<>
+
+            // If is ENEMY
+            if (hitResult.transform.gameObject.tag == "Enemy")
+            {
+                hitResult.transform.GetComponent<EnemyMovement>().TakeDamage(AttackDmg);
+            }
         }
     }
 
