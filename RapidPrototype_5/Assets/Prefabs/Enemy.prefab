@@ -114,15 +114,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07178271479ff94c9a2094ef42eb456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0
+  attackDamage: 10
   attackSpeed: 0
+  attackRange: 3
+  attackRadius: 1
   maxHealth: 100
   currHealth: 0
   isWandering: 0
-  minXWanderDistance: -100
-  maxXWanderDistance: 100
-  minZWanderDistance: -50
-  maxZWanderDistance: 50
+  wanderOffsetX: 10
+  wanderOffsetZ: 10
+  ChangeDirectionSpeed: 1
 --- !u!135 &135740459880365456
 SphereCollider:
   m_ObjectHideFlags: 1

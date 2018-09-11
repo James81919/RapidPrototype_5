@@ -7,12 +7,14 @@ public class PlayerMoveTemp : MonoBehaviour
 	public float MoveSpeed = 5f;
 
 	private Rigidbody m_rigidBody;
-	private Ray rotationRay;
+    private Ray rotationRay;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start()
 	{
 		m_rigidBody = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
 	}
 
 	void Update()
@@ -45,8 +47,13 @@ public class PlayerMoveTemp : MonoBehaviour
 		// Process Movement
 		if (inputVec.magnitude != 0 && inputVec.magnitude < MoveSpeed)
 		{
+            anim.SetBool("IsRunning", true);
 			m_rigidBody.velocity = 
 				inputVec.normalized * MoveSpeed * Time.fixedDeltaTime;
 		}
+        else
+        {
+            anim.SetBool("IsRunning", false);
+        }
 	}
 }
