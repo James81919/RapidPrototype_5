@@ -33,8 +33,10 @@ public class Player : MonoBehaviour, IKillable
 	private TextMeshProUGUI defLabel;
 	private TextMeshProUGUI spdLabel;
 
+    public Inventory inventory;
 
-	void Awake()
+
+    void Awake()
 	{
         // Reference Player animator
         m_animator = GetComponentInChildren<Animator>();
@@ -166,6 +168,13 @@ public class Player : MonoBehaviour, IKillable
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Item") //If we collide with an item that we can pick up
+        {
+            inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+        }
+    }
     // ============================================================
 
 
