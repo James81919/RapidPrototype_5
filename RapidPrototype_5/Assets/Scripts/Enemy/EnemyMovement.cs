@@ -8,15 +8,16 @@ public class EnemyMovement : MonoBehaviour {
     [Header("Stats")]
     public float attackDamage;
     public float attackSpeed;
-    public float maxHealth;
+    public float attackRange = 3f;
+    public float attackRadius = 1f;
+    public float maxHealth = 100;
     public float currHealth;
 
     [Header("Movement")]
     public bool isWandering;
-    public float minXWanderDistance;
-    public float maxXWanderDistance;
-    public float minZWanderDistance;
-    public float maxZWanderDistance;
+    public float wanderOffsetX;
+    public float wanderOffsetZ;
+    public float ChangeDirectionSpeed;
 
     private NavMeshAgent agent;
 
@@ -32,6 +33,28 @@ public class EnemyMovement : MonoBehaviour {
         if (currHealth <= 0)
         {
             Destroy(gameObject);
+        }
+
+        // Shoot out a ray infront of the player
+        Ray attackRay = new Ray(this.transform.position, this.transform.forward);
+
+        RaycastHit[] raycastHits;
+        // Cast out the ray as a sphere shape in the attack range
+        raycastHits = Physics.SphereCastAll(attackRay, attackRadius, attackRange, LayerMask.GetMask("Player"), QueryTriggerInteraction.Ignore);
+        Debug.DrawRay(transform.position, transform.forward * attackRange, Color.blue, 1f, false);
+
+        //anim.SetTrigger("Attack");
+        foreach (RaycastHit hitResult in raycastHits)
+        {
+            Debug.Log("Hit: " + hitResult.transform.gameObject.name);
+            // Do whatever the other object needs to be react
+            //hitResult.transform.GetComponent<>
+
+            // If is PLAYER
+            if (hitResult.transform.gameObject.tag == "Player")
+            {
+                hitResult.transform.GetComponent<Player>().TakeDamage(attackDamage);
+            }
         }
     }
 
@@ -53,14 +76,22 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(Attack(collision.gameObject));
+        }
+    }
+
     IEnumerator MoveToPos()
     {
-        Vector3 newPos = new Vector3(Random.Range(minXWanderDistance, maxXWanderDistance),
-            transform.position.y, Random.Range(minZWanderDistance,
-            maxZWanderDistance));
+        Vector3 newPos = new Vector3(Random.Range(transform.position.x - wanderOffsetX, transform.position.x + wanderOffsetX),
+            transform.position.y,
+            Random.Range(transform.position.z - wanderOffsetZ, transform.position.z + wanderOffsetZ));
 
         agent.SetDestination(newPos);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(ChangeDirectionSpeed);
 
         if (isWandering)
         {
@@ -79,5 +110,11 @@ public class EnemyMovement : MonoBehaviour {
         GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
         yield return new WaitForSeconds(0.1f);
         GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
+    }
+
+    IEnumerator Attack(GameObject player)
+    {
+        yield return new WaitForSeconds(attackSpeed);
+        player.GetComponent<Player>().TakeDamage(attackDamage);
     }
 }

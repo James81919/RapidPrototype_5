@@ -33,9 +33,7 @@ public class Player : MonoBehaviour
     private Animator anim;
 
 	void Awake()
-	{
-        anim = GetComponentInChildren<Animator>();
-
+    {
 		// Reference the health UI
 		m_healthBarUI = 
 			transform.Find("PlayerUICanvas/PlayerHealthBar").gameObject;
@@ -59,12 +57,19 @@ public class Player : MonoBehaviour
 
 		// Hide the stats panel at the beginning
 		m_statsCanvas.SetActive(false);
-	}
+
+        anim = GetComponentInChildren<Animator>();
+    }
 
 	// Update is called once per frame
 	void Update()
 	{
 		UpdateHealthBar();
+
+        if (CurrHealth <= 0)
+        {
+            anim.SetBool("IsDead", true);
+        }
 
 		if (Input.GetKeyDown(KeyCode.P))
 		{
@@ -73,12 +78,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Attack"))
         {
-            LightAttack();
+            StartCoroutine(LightAttack());
         }
-
 	}
 
-    private void LightAttack()
+    private IEnumerator LightAttack()
     {
         // Shoot out a ray infront of the player
         Ray attackRay = new Ray(this.transform.position, this.transform.forward);
@@ -88,7 +92,7 @@ public class Player : MonoBehaviour
         raycastHits = Physics.SphereCastAll(attackRay, AttackRadius, AttackRange, AttackingLayer, QueryTriggerInteraction.Ignore);
         Debug.DrawRay(transform.position, transform.forward * AttackRange, Color.blue, 2f, false);
 
-        anim.SetTrigger("Attack");
+        anim.SetBool("IsAttacking", true);
         foreach (RaycastHit hitResult in raycastHits)
         {
             Debug.Log("Hit: " + hitResult.transform.gameObject.name);
@@ -101,6 +105,8 @@ public class Player : MonoBehaviour
                 hitResult.transform.GetComponent<EnemyMovement>().TakeDamage(AttackDmg);
             }
         }
+        yield return new WaitForSeconds(0.4f);
+        anim.SetBool("IsAttacking", false);
     }
 
 	private void UpdateHealthBar()
@@ -129,4 +135,9 @@ public class Player : MonoBehaviour
 		defLabel.SetText(Deffence.ToString());
 		spdLabel.SetText(Speed.ToString());
 	}
+
+    public void TakeDamage(float damage)
+    {
+        CurrHealth -= damage;
+    }
 }
