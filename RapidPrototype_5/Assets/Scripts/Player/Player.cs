@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKillable
 {
 	[Header("Player Stat")]
 	public float TotalHealth = 100f;
@@ -18,24 +18,27 @@ public class Player : MonoBehaviour
     [Header("Config")]
     public LayerMask AttackingLayer;
 
-    public Inventory inventory;
+    // Behaviour Flags ==============
+    private bool m_canLightAttack;
 
+    // Animation Control ============
+    private Animator m_animator;
 
     // Player HUD ===================
     private GameObject m_healthBarUI;
-	// ==============================
 
-	// Player stats panel ===========
+	// Player Stats Panel ===========
 	private GameObject m_statsCanvas;
 	private TextMeshProUGUI atkLabel;
 	private TextMeshProUGUI defLabel;
 	private TextMeshProUGUI spdLabel;
-    // ==============================
 
-    private Animator anim;
 
 	void Awake()
-    {
+	{
+        // Reference Player animator
+        m_animator = GetComponentInChildren<Animator>();
+
 		// Reference the health UI
 		m_healthBarUI = 
 			transform.Find("PlayerUICanvas/PlayerHealthBar").gameObject;
@@ -46,33 +49,25 @@ public class Player : MonoBehaviour
 		atkLabel = m_statsCanvas.transform.
 			Find("AttackValue").gameObject.GetComponent<TextMeshProUGUI>();
 		defLabel = m_statsCanvas.transform.
-			Find("AttackValue").gameObject.GetComponent<TextMeshProUGUI>();
+			Find("DeffendValue").gameObject.GetComponent<TextMeshProUGUI>();
 		spdLabel = m_statsCanvas.transform.
-			Find("AttackValue").gameObject.GetComponent<TextMeshProUGUI>();
+			Find("SpeedValue").gameObject.GetComponent<TextMeshProUGUI>();
 	}
-
-	// Use this for initialization
 	void Start()
 	{
         // Set the health to full health
         CurrHealth = TotalHealth;
+        UpdateHealthBar();
 
-		// Hide the stats panel at the beginning
-		m_statsCanvas.SetActive(false);
+        // Hide the stats panel at the beginning
+        m_statsCanvas.SetActive(false);
 
-        anim = GetComponentInChildren<Animator>();
+        // Flag set to default
+        m_canLightAttack = true;
+
     }
-
-	// Update is called once per frame
 	void Update()
 	{
-		UpdateHealthBar();
-
-        if (CurrHealth <= 0)
-        {
-            anim.SetBool("IsDead", true);
-        }
-
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			StatsPanelOnOff();
@@ -80,44 +75,49 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Attack"))
         {
-            StartCoroutine(LightAttack());
+            if (m_canLightAttack)
+            {
+                StartCoroutine(LightAttack());
+            }
         }
 	}
 
     private IEnumerator LightAttack()
     {
+        // Make light attack on CD
+        m_canLightAttack = false;
+
         // Shoot out a ray infront of the player
         Ray attackRay = new Ray(this.transform.position, this.transform.forward);
 
         RaycastHit[] raycastHits;
         // Cast out the ray as a sphere shape in the attack range
-        raycastHits = Physics.SphereCastAll(attackRay, AttackRadius, AttackRange, AttackingLayer, QueryTriggerInteraction.Ignore);
+        raycastHits = 
+            Physics.SphereCastAll(attackRay, AttackRadius, AttackRange, AttackingLayer, QueryTriggerInteraction.Ignore);
         Debug.DrawRay(transform.position, transform.forward * AttackRange, Color.blue, 2f, false);
 
-        anim.SetBool("IsAttacking", true);
+        m_animator.SetBool("IsAttacking", true);
+        yield return new WaitForSeconds(0.5f);
         foreach (RaycastHit hitResult in raycastHits)
         {
             Debug.Log("Hit: " + hitResult.transform.gameObject.name);
             // Do whatever the other object needs to be react
-            //hitResult.transform.GetComponent<>
-
-            // If is ENEMY
-            if (hitResult.transform.gameObject.tag == "Enemy")
+            IKillable killableObj = hitResult.transform.GetComponent<IKillable>();
+            if (killableObj != null)
             {
-                hitResult.transform.GetComponent<EnemyMovement>().TakeDamage(AttackDmg);
+                killableObj.TakeDamage(AttackDmg);
             }
         }
-        yield return new WaitForSeconds(0.4f);
-        anim.SetBool("IsAttacking", false);
+        yield return new WaitForSeconds(0.5f);
+        m_animator.SetBool("IsAttacking", false);
+        m_canLightAttack = true;
     }
-
-	private void UpdateHealthBar()
+    private void UpdateHealthBar()
 	{
 		// Set the health bar to current health by percentage
 		m_healthBarUI.GetComponent<Slider>().value =
 			CurrHealth / TotalHealth;
 	}
-
 	private void StatsPanelOnOff()
 	{
 		if (m_statsCanvas.activeSelf == false)
@@ -130,7 +130,6 @@ public class Player : MonoBehaviour
 			m_statsCanvas.SetActive(false);
 		}
 	}
-
 	private void UpdateStatsPanel()
 	{
 		atkLabel.SetText(AttackDmg.ToString());
@@ -138,16 +137,36 @@ public class Player : MonoBehaviour
 		spdLabel.SetText(Speed.ToString());
 	}
 
-    public void TakeDamage(float damage)
-    {
-        CurrHealth -= damage;
-    }
+    /* Interface Implementation =================================*/
 
-    private void OnTriggerEnter(Collider other)
+    // IKillable
+    public void TakeDamage(float _value)
     {
-        if (other.tag == "Item") //If we collide with an item that we can pick up
+        CurrHealth -= _value;
+
+    }
+    public void CheckDeath()
+    {
+        if (IsAlive() == false)
         {
-            inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+            KillEntity();
         }
     }
+    public void KillEntity()
+    {
+        m_animator.SetBool("IsDead", true);
+    }
+    public bool IsAlive()
+    {
+        if (CurrHealth <= 0f)
+        {
+            return false;
+        }
+        return true;
+    }
+
+
+    // ============================================================
+
+
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour, IKillable
+{
 
     [Header("Stats")]
     public float attackDamage;
@@ -19,22 +20,20 @@ public class EnemyMovement : MonoBehaviour {
     public float wanderOffsetZ;
     public float ChangeDirectionSpeed;
 
+    // Navigation Agent
     private NavMeshAgent agent;
 
-    private void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+    }
+    private void Start()
+    {
         StartCoroutine(MoveToPos());
         currHealth = maxHealth;
     }
-
     private void Update()
     {
-        if (currHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-
         // Shoot out a ray infront of the player
         Ray attackRay = new Ray(this.transform.position, this.transform.forward);
 
@@ -46,18 +45,10 @@ public class EnemyMovement : MonoBehaviour {
         //anim.SetTrigger("Attack");
         foreach (RaycastHit hitResult in raycastHits)
         {
-            Debug.Log("Hit: " + hitResult.transform.gameObject.name);
-            // Do whatever the other object needs to be react
-            //hitResult.transform.GetComponent<>
-
-            // If is PLAYER
-            if (hitResult.transform.gameObject.tag == "Player")
-            {
-                hitResult.transform.GetComponent<Player>().TakeDamage(attackDamage);
-            }
+            hitResult.transform.GetComponent<IKillable>().
+                TakeDamage(attackDamage);
         }
     }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
@@ -66,7 +57,6 @@ public class EnemyMovement : MonoBehaviour {
             agent.SetDestination(other.transform.position);
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
@@ -75,7 +65,6 @@ public class EnemyMovement : MonoBehaviour {
             StartCoroutine(MoveToPos());
         }
     }
-
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -98,23 +87,46 @@ public class EnemyMovement : MonoBehaviour {
             StartCoroutine(MoveToPos());
         }
     }
-
-    public void TakeDamage(float damage)
-    {
-        currHealth -= damage;
-        StartCoroutine(DamageEffect());
-    }
-
     IEnumerator DamageEffect()
     {
         GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
         yield return new WaitForSeconds(0.1f);
         GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
     }
-
     IEnumerator Attack(GameObject player)
     {
         yield return new WaitForSeconds(attackSpeed);
         player.GetComponent<Player>().TakeDamage(attackDamage);
     }
+
+    /* Interface Implementation =================================*/
+
+    // IKillable
+    public void TakeDamage(float _value)
+    {
+        currHealth -= _value;
+        StartCoroutine(DamageEffect());
+        CheckDeath();
+    }
+    public void CheckDeath()
+    {
+        if(IsAlive() == false)
+        {
+            KillEntity();
+        }
+    }
+    public void KillEntity()
+    {
+        Destroy(gameObject);
+    }
+    public bool IsAlive()
+    {
+        if (currHealth <= 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    // ============================================================
 }

@@ -288,6 +288,21 @@ Prefab:
       propertyPath: MoveSpeed
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 137857797335807966, guid: d5ad1f29cfd2d11418658e1c2a207ee5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec2b86bdaef61f45b8487b5773fdb9e, type: 2}
+    - target: {fileID: 137287787229728434, guid: d5ad1f29cfd2d11418658e1c2a207ee5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec2b86bdaef61f45b8487b5773fdb9e, type: 2}
+    - target: {fileID: 137673650565535074, guid: d5ad1f29cfd2d11418658e1c2a207ee5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec2b86bdaef61f45b8487b5773fdb9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ad1f29cfd2d11418658e1c2a207ee5, type: 2}
   m_IsPrefabAsset: 0
