@@ -89,7 +89,22 @@ ModelImporter:
     13700002: Hat
     13700004: Head
     13700006: scythe
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 49304118607248c46917336b951fb3a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 355596a76bc90d24a83b9efcd49e0778, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: 355596a76bc90d24a83b9efcd49e0778, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

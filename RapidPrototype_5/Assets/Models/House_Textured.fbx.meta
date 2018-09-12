@@ -156,7 +156,22 @@ ModelImporter:
     4300052: polySurface35
     4300054: polySurface36
     4300056: polySurface37
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone
+    second: {fileID: 2100000, guid: 9b309c7f1baf0dd4bafad622c7068e7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tiles
+    second: {fileID: 2100000, guid: 7c002e4e35448df4590fce9bd12ca8ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 36c1b21a1de59b04bbd67f9d4a051083, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
