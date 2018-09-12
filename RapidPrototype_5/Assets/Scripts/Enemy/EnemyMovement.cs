@@ -23,6 +23,8 @@ public class EnemyMovement : MonoBehaviour, IKillable
     // Navigation Agent
     private NavMeshAgent agent;
 
+    public SkinnedMeshRenderer meshren;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -43,11 +45,11 @@ public class EnemyMovement : MonoBehaviour, IKillable
         Debug.DrawRay(transform.position, transform.forward * attackRange, Color.blue, 1f, false);
 
         //anim.SetTrigger("Attack");
-        foreach (RaycastHit hitResult in raycastHits)
-        {
-            hitResult.transform.GetComponent<IKillable>().
-                TakeDamage(attackDamage);
-        }
+        //foreach (RaycastHit hitResult in raycastHits)
+        //{
+        //    hitResult.transform.GetComponent<IKillable>().
+        //        TakeDamage(attackDamage);
+        //}
     }
     private void OnTriggerStay(Collider other)
     {
@@ -55,6 +57,7 @@ public class EnemyMovement : MonoBehaviour, IKillable
         {
             isWandering = false;
             agent.SetDestination(other.transform.position);
+            agent.updateRotation = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -80,6 +83,7 @@ public class EnemyMovement : MonoBehaviour, IKillable
             Random.Range(transform.position.z - wanderOffsetZ, transform.position.z + wanderOffsetZ));
 
         agent.SetDestination(newPos);
+        agent.updateRotation = true;
         yield return new WaitForSeconds(ChangeDirectionSpeed);
 
         if (isWandering)
@@ -89,9 +93,9 @@ public class EnemyMovement : MonoBehaviour, IKillable
     }
     IEnumerator DamageEffect()
     {
-        GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+        meshren.material.color = new Color(1, 0, 0);
         yield return new WaitForSeconds(0.1f);
-        GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
+        meshren.material.color = new Color(1, 1, 1);
     }
     IEnumerator Attack(GameObject player)
     {

@@ -79,7 +79,7 @@ public class Player : MonoBehaviour, IKillable
         {
             if (m_canLightAttack)
             {
-                LightAttack();
+                StartCoroutine(LightAttack());
             }
         }
 	}
