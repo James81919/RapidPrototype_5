@@ -75,9 +75,12 @@ public class Player : MonoBehaviour, IKillable
 			StatsPanelOnOff();
 		}
 
-        if (Input.GetButtonDown("Attack") && m_canLightAttack)
+        if (Input.GetButtonDown("Attack"))
         {
-            StartCoroutine(LightAttack());
+            if (m_canLightAttack)
+            {
+                LightAttack();
+            }
         }
 	}
 
@@ -111,7 +114,7 @@ public class Player : MonoBehaviour, IKillable
         m_animator.SetBool("IsAttacking", false);
         m_canLightAttack = true;
     }
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
 	{
 		// Set the health bar to current health by percentage
 		m_healthBarUI.GetComponent<Slider>().value =
@@ -129,7 +132,7 @@ public class Player : MonoBehaviour, IKillable
 			m_statsCanvas.SetActive(false);
 		}
 	}
-	private void UpdateStatsPanel()
+	public void UpdateStatsPanel()
 	{
 		atkLabel.SetText(AttackDmg.ToString());
 		defLabel.SetText(Deffence.ToString());
@@ -142,7 +145,7 @@ public class Player : MonoBehaviour, IKillable
     public void TakeDamage(float _value)
     {
         CurrHealth -= _value;
-
+        UpdateHealthBar();
     }
     public void CheckDeath()
     {
@@ -170,6 +173,14 @@ public class Player : MonoBehaviour, IKillable
         if (other.tag == "Item") //If we collide with an item that we can pick up
         {
             inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+        }
+
+        if (other.tag == "MutiItem")
+        {
+            for (int i = 0; i < other.GetComponent<MutiItem>().items.Length; i++)
+            {
+                inventory.AddItem(other.GetComponent<MutiItem>().items[i]);
+            }
         }
     }
     // ============================================================
