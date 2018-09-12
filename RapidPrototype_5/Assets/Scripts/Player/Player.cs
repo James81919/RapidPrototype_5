@@ -79,7 +79,7 @@ public class Player : MonoBehaviour, IKillable
         {
             if (m_canLightAttack)
             {
-                StartCoroutine(LightAttack());
+                LightAttack();
             }
         }
 	}
@@ -114,7 +114,7 @@ public class Player : MonoBehaviour, IKillable
         m_animator.SetBool("IsAttacking", false);
         m_canLightAttack = true;
     }
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
 	{
 		// Set the health bar to current health by percentage
 		m_healthBarUI.GetComponent<Slider>().value =
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour, IKillable
 			m_statsCanvas.SetActive(false);
 		}
 	}
-	private void UpdateStatsPanel()
+	public void UpdateStatsPanel()
 	{
 		atkLabel.SetText(AttackDmg.ToString());
 		defLabel.SetText(Deffence.ToString());

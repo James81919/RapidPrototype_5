@@ -54,18 +54,21 @@ public class Item : MonoBehaviour
         switch (type) //Checks which kind of item this is
         {
             case ItemType.MANA:
-                Debug.Log("I just used a mana potion");
+                //GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CurrHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CurrHealth + 50;
                 break;
             case ItemType.HEALTH:
-                Debug.Log("I just used a health potion");
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CurrHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CurrHealth + 50;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UpdateHealthBar();
                 break;
 
             case ItemType.BlackStone:
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Deffence++;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UpdateStatsPanel();
                 break;
 
             case ItemType.BlueStone:
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AttackDmg++;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UpdateStatsPanel();
                 break;
         }
 
