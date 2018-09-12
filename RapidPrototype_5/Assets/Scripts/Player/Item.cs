@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {MANA, HEALTH, WEAPON};
+public enum ItemType {MANA, HEALTH, BlackStone, BlueStone, WEAPON};
 public enum Quality {COMMON,UNCOMMON,RARE,EPIC,LEGENDARY,ARTIFACT}
 
 public class Item : MonoBehaviour 
@@ -58,6 +58,14 @@ public class Item : MonoBehaviour
                 break;
             case ItemType.HEALTH:
                 Debug.Log("I just used a health potion");
+                break;
+
+            case ItemType.BlackStone:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Deffence++;
+                break;
+
+            case ItemType.BlueStone:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AttackDmg++;
                 break;
         }
 

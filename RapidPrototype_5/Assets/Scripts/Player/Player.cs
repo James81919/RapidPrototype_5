@@ -145,7 +145,7 @@ public class Player : MonoBehaviour, IKillable
     public void TakeDamage(float _value)
     {
         CurrHealth -= _value;
-
+        UpdateHealthBar();
     }
     public void CheckDeath()
     {
@@ -173,6 +173,14 @@ public class Player : MonoBehaviour, IKillable
         if (other.tag == "Item") //If we collide with an item that we can pick up
         {
             inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+        }
+
+        if (other.tag == "MutiItem")
+        {
+            for (int i = 0; i < other.GetComponent<MutiItem>().items.Length; i++)
+            {
+                inventory.AddItem(other.GetComponent<MutiItem>().items[i]);
+            }
         }
     }
     // ============================================================
