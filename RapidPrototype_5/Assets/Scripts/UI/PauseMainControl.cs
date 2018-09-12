@@ -80,8 +80,10 @@ public class PauseMainControl : MonoBehaviour
 	}
 	public void GotoMainMenu()
 	{
-		// Load into the main menu scene
-		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        // Reset the time scale since moving scene
+        Time.timeScale = 1f;
+        // Load into the main menu scene
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
 
 }
