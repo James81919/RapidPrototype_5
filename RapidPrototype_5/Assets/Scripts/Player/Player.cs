@@ -75,12 +75,9 @@ public class Player : MonoBehaviour, IKillable
 			StatsPanelOnOff();
 		}
 
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetButtonDown("Attack") && m_canLightAttack)
         {
-            if (m_canLightAttack)
-            {
-                StartCoroutine(LightAttack());
-            }
+            StartCoroutine(LightAttack());
         }
 	}
 
