@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour, IKillable
 {
@@ -23,9 +24,16 @@ public class EnemyMovement : MonoBehaviour, IKillable
     // Navigation Agent
     private NavMeshAgent agent;
 
+    // Healthbar UI
+    private Canvas healthCanvas;
+    private Slider healthbar;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        healthCanvas = GetComponentInChildren<Canvas>();
+        healthbar = healthCanvas.GetComponentInChildren<Slider>();
+        healthbar.maxValue = maxHealth;
     }
     private void Start()
     {
@@ -34,6 +42,9 @@ public class EnemyMovement : MonoBehaviour, IKillable
     }
     private void Update()
     {
+        healthbar.value = currHealth;
+        healthCanvas.transform.eulerAngles = new Vector3(0,0,0);
+
         // Shoot out a ray infront of the player
         Ray attackRay = new Ray(this.transform.position, this.transform.forward);
 
