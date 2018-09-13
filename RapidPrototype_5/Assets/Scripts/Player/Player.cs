@@ -110,15 +110,14 @@ public class Player : MonoBehaviour, IKillable
                 killableObj.TakeDamage(AttackDmg);
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         m_animator.SetBool("IsAttacking", false);
         m_canLightAttack = true;
     }
     public void UpdateHealthBar()
 	{
 		// Set the health bar to current health by percentage
-		m_healthBarUI.GetComponent<Slider>().value =
-			CurrHealth / TotalHealth;
+		m_healthBarUI.GetComponent<Slider>().value = CurrHealth / TotalHealth;
 	}
 	private void StatsPanelOnOff()
 	{
@@ -173,6 +172,7 @@ public class Player : MonoBehaviour, IKillable
         if (other.tag == "Item") //If we collide with an item that we can pick up
         {
             inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+            Destroy(other.gameObject);
         }
 
         if (other.tag == "MutiItem")
@@ -181,6 +181,7 @@ public class Player : MonoBehaviour, IKillable
             {
                 inventory.AddItem(other.GetComponent<MutiItem>().items[i]);
             }
+            Destroy(other.gameObject);
         }
     }
     // ============================================================

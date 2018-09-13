@@ -20,14 +20,16 @@ public class EnemyMovement : MonoBehaviour, IKillable
     public float wanderOffsetZ;
     public float ChangeDirectionSpeed;
 
+    public bool damagingplayer = false;
     // Navigation Agent
     private NavMeshAgent agent;
-
+    public Animator anim;
     public SkinnedMeshRenderer meshren;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = this.GetComponent<Animator>();
     }
     private void Start()
     {
@@ -44,12 +46,18 @@ public class EnemyMovement : MonoBehaviour, IKillable
         raycastHits = Physics.SphereCastAll(attackRay, attackRadius, attackRange, LayerMask.GetMask("Player"), QueryTriggerInteraction.Ignore);
         Debug.DrawRay(transform.position, transform.forward * attackRange, Color.blue, 1f, false);
 
+
+
         //anim.SetTrigger("Attack");
-        //foreach (RaycastHit hitResult in raycastHits)
-        //{
-        //    hitResult.transform.GetComponent<IKillable>().
-        //        TakeDamage(attackDamage);
-        //}
+        foreach (RaycastHit hitResult in raycastHits)
+        {
+            if (hitResult.rigidbody.tag == "Player" && hitResult.distance < 1)
+            {
+                anim.SetBool("Attack", true);
+            }
+        }
+        //anim.SetBool("Attack", false);
+
     }
     private void OnTriggerStay(Collider other)
     {
@@ -72,12 +80,14 @@ public class EnemyMovement : MonoBehaviour, IKillable
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine(Attack(collision.gameObject));
+            damagingplayer = true;
+            
         }
     }
 
     IEnumerator MoveToPos()
     {
+
         Vector3 newPos = new Vector3(Random.Range(transform.position.x - wanderOffsetX, transform.position.x + wanderOffsetX),
             transform.position.y,
             Random.Range(transform.position.z - wanderOffsetZ, transform.position.z + wanderOffsetZ));
@@ -97,10 +107,18 @@ public class EnemyMovement : MonoBehaviour, IKillable
         yield return new WaitForSeconds(0.1f);
         meshren.material.color = new Color(1, 1, 1);
     }
-    IEnumerator Attack(GameObject player)
+    public void Attack()
     {
-        yield return new WaitForSeconds(attackSpeed);
-        player.GetComponent<Player>().TakeDamage(attackDamage);
+        //yield return new WaitForSeconds(attackSpeed);
+        if (damagingplayer == true) {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(attackDamage);
+        }
+        damagingplayer = false;
+    }
+
+    public void DoneAttack()
+    {
+        anim.SetBool("Attack", false);
     }
 
     /* Interface Implementation =================================*/
@@ -121,8 +139,19 @@ public class EnemyMovement : MonoBehaviour, IKillable
     }
     public void KillEntity()
     {
-        Destroy(gameObject);
+        anim.SetBool("Attack", false);
+        StopAllCoroutines();
+        agent.SetDestination(this.transform.position);
+        anim.SetBool("Death", true);
+
     }
+
+    public void DoneDeath()
+    {
+        this.tag = "MutiItem";
+        this.GetComponent<BoxCollider>().isTrigger = true;
+    }
+
     public bool IsAlive()
     {
         if (currHealth <= 0)

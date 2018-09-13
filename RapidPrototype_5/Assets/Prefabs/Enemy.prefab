@@ -87,7 +87,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268643757972336}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: ec9f1fbc0042f394da1dbdc9fbdfd6eb, type: 3}
 --- !u!54 &54996504520713022
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  attackSpeed: 0
+  attackSpeed: 1
   attackRange: 3
   attackRadius: 1
   maxHealth: 100
@@ -124,6 +124,7 @@ MonoBehaviour:
   wanderOffsetX: 10
   wanderOffsetZ: 10
   ChangeDirectionSpeed: 1
+  meshren: {fileID: 0}
 --- !u!135 &135740459880365456
 SphereCollider:
   m_ObjectHideFlags: 1
