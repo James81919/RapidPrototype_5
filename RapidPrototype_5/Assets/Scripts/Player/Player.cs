@@ -108,6 +108,23 @@ public class Player : MonoBehaviour, IKillable
             }
         }
 	}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Item") //If we collide with an item that we can pick up
+        {
+            inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
+            Destroy(other.gameObject);
+        }
+
+        if (other.tag == "MutiItem")
+        {
+            for (int i = 0; i < other.GetComponent<MutiItem>().items.Length; i++)
+            {
+                inventory.AddItem(other.GetComponent<MutiItem>().items[i]);
+            }
+            Destroy(other.gameObject);
+        }
+    }
 
     private IEnumerator LightAttack()
     {
@@ -184,8 +201,6 @@ public class Player : MonoBehaviour, IKillable
         StopAllCoroutines();
         
     }
-
-
     public bool IsAlive()
     {
         if (CurrHealth <= 0f)
@@ -196,23 +211,6 @@ public class Player : MonoBehaviour, IKillable
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Item") //If we collide with an item that we can pick up
-        {
-            inventory.AddItem(other.GetComponent<Item>()); //Adds the item to the inventory.
-            Destroy(other.gameObject);
-        }
-
-        if (other.tag == "MutiItem")
-        {
-            for (int i = 0; i < other.GetComponent<MutiItem>().items.Length; i++)
-            {
-                inventory.AddItem(other.GetComponent<MutiItem>().items[i]);
-            }
-            Destroy(other.gameObject);
-        }
-    }
     // ============================================================
 
 

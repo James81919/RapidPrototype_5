@@ -10,17 +10,13 @@ public class PlayerCamera : MonoBehaviour
 	[Tooltip("Camera distance offset of the player")]
 	public float CameraLength;
 
-
+    // The player object it needs to be followed
 	private GameObject m_player;
 
-
-	// Use this for initialization
 	void Start ()
 	{
 		m_player = GameObject.FindGameObjectWithTag("Player");
 	}
-	
-	// Update is called once per frame
 	void Update ()
 	{
 		// Check if player exists
