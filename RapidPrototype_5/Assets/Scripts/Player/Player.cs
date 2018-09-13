@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour, IKillable
 {
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour, IKillable
     }
 	void Update()
 	{
+        CheckDeath();
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			StatsPanelOnOff();
@@ -156,7 +158,10 @@ public class Player : MonoBehaviour, IKillable
     public void KillEntity()
     {
         m_animator.SetBool("IsDead", true);
+        StopAllCoroutines();
     }
+
+
     public bool IsAlive()
     {
         if (CurrHealth <= 0f)
