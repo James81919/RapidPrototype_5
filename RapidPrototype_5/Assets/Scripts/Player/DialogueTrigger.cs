@@ -7,8 +7,12 @@ public class DialogueTrigger : MonoBehaviour {
 
     public float LetterPauseTime;
     public float sentencePauseTime;
-    public string popupText = "PRESS E To Interact";
-    public string[] conversationOrder;
+
+    [Header("Ending conversations")]
+    public string[] whiteblackNotUsedConvo;
+    public string[] allUsedConvo;
+    public string[] onlyWhiteConvo;
+    public string[] onlyBlackConvo;
 
     private int currDialogue;
     private GameObject dialogueBox;
@@ -32,6 +36,12 @@ public class DialogueTrigger : MonoBehaviour {
     IEnumerator PopupDialogue(GameObject player)
     {
         player.GetComponent<PlayerMoveTemp>().enabled = false;
+
+        string[] conversationOrder;
+
+        conversationOrder = whiteblackNotUsedConvo;
+
+        if (player.GetComponent<Player>())
 
         dialogueBox.SetActive(true);
 
