@@ -2236,6 +2236,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 340569330}
+  - component: {fileID: 340569332}
+  - component: {fileID: 340569331}
   m_Layer: 0
   m_Name: GameObject (4)
   m_TagString: Untagged
@@ -2269,6 +2271,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &340569331
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 340569329}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 2.51, y: -7.11, z: -5.32}
+--- !u!114 &340569332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 340569329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd37c159ec84e74b9d147a99fad1743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRocks: 10
 --- !u!1001 &369293060
 Prefab:
   m_ObjectHideFlags: 0
@@ -15281,6 +15307,7 @@ MonoBehaviour:
   AttackRadius: 0.5
   darkaura: 0
   effect: {fileID: 0}
+  novillager: 0
   AttackingLayer:
     serializedVersion: 2
     m_Bits: 1025
