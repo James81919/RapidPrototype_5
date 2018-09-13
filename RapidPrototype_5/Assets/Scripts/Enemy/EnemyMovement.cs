@@ -63,14 +63,20 @@ public class EnemyMovement : MonoBehaviour, IKillable
     {
         if (other.tag == "Player")
         {
-            isWandering = false;
-            agent.SetDestination(other.transform.position);
-            agent.updateRotation = true;
+            if (IsAlive()) {
+                isWandering = false;
+                agent.SetDestination(other.transform.position);
+                agent.updateRotation = true;
+            }
+            else
+            {
+                agent.SetDestination(this.transform.position);
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && IsAlive())
         {
             isWandering = true;
             StartCoroutine(MoveToPos());

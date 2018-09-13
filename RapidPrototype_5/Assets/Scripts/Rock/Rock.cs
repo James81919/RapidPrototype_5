@@ -44,13 +44,8 @@ public class Rock : MonoBehaviour, IKillable
     }
     public void KillEntity()
     {
-        Debug.Log("Rock Dead");
-
-        /// Play Rock death animation
-
-        /// Spawn the blue soul crystal
-        
-        /// De-spawn the object
+        this.tag = "Item";
+        this.GetComponent<BoxCollider>().isTrigger = true;
     }
     public bool IsAlive()
     {
