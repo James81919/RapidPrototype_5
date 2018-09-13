@@ -8,5 +8,6 @@ public class Gameover : MonoBehaviour {
     public void GotoMain()
     {
         SceneManager.LoadScene(0);
+        Destroy(this.transform.root.gameObject);
     }
 }

@@ -36,11 +36,19 @@ public class Player : MonoBehaviour, IKillable
 	private TextMeshProUGUI defLabel;
 	private TextMeshProUGUI spdLabel;
 
-    public Inventory inventory;
+    [System.NonSerialized]
+    public int killCount;
 
+    public Inventory inventory;
+    private static bool created = false;
 
     void Awake()
 	{
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+
         // Reference Player animator
         m_animator = GetComponentInChildren<Animator>();
 
@@ -69,7 +77,7 @@ public class Player : MonoBehaviour, IKillable
 
         // Flag set to default
         m_canLightAttack = true;
-
+        killCount = 0;
     }
 	void Update()
 	{
@@ -128,6 +136,10 @@ public class Player : MonoBehaviour, IKillable
             if (killableObj != null)
             {
                 killableObj.TakeDamage(AttackDmg);
+                if (hitResult.transform.tag == "Enemy")
+                {
+                    killCount++;
+                }
             }
         }
         //yield return new WaitForSeconds(0.5f);
@@ -177,6 +189,7 @@ public class Player : MonoBehaviour, IKillable
     {
         m_animator.SetBool("IsDead", true);
         StopAllCoroutines();
+        
     }
 
 
