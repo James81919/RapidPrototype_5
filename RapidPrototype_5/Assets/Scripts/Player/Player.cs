@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class Player : MonoBehaviour, IKillable
 {
 	[Header("Player Stat")]
@@ -14,7 +15,9 @@ public class Player : MonoBehaviour, IKillable
 	public float Speed = 300f;
     public float AttackRange = 3f;
     public float AttackRadius = 1f;
-
+    public bool darkaura = false;
+    public GameObject effect;
+    public bool novillager = false;
     [Header("Config")]
     public LayerMask AttackingLayer;
 
@@ -70,6 +73,23 @@ public class Player : MonoBehaviour, IKillable
     }
 	void Update()
 	{
+
+        if (darkaura)
+        {
+            effect.SetActive(true);
+        }
+
+        if (Deffence >= 60)
+        {
+            darkaura = true;
+        }
+
+        if (AttackDmg >= 60)
+        {
+            novillager = true;
+        }
+
+        CheckDeath();
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			StatsPanelOnOff();
@@ -156,7 +176,10 @@ public class Player : MonoBehaviour, IKillable
     public void KillEntity()
     {
         m_animator.SetBool("IsDead", true);
+        StopAllCoroutines();
     }
+
+
     public bool IsAlive()
     {
         if (CurrHealth <= 0f)

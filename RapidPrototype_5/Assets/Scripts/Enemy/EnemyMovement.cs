@@ -109,6 +109,7 @@ public class EnemyMovement : MonoBehaviour, IKillable
     }
     IEnumerator DamageEffect()
     {
+        anim.SetTrigger("Hurt");
         meshren.material.color = new Color(1, 0, 0);
         yield return new WaitForSeconds(0.1f);
         meshren.material.color = new Color(1, 1, 1);
@@ -117,7 +118,7 @@ public class EnemyMovement : MonoBehaviour, IKillable
     {
         //yield return new WaitForSeconds(attackSpeed);
         if (damagingplayer == true) {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(attackDamage);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(attackDamage - GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Deffence);
         }
         damagingplayer = false;
     }
