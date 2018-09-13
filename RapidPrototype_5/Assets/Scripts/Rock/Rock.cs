@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rock : MonoBehaviour, IKillable
 {
@@ -8,10 +9,22 @@ public class Rock : MonoBehaviour, IKillable
     public float TotalHealth = 1f;
     public float CurrHealth;
 
+    // Healthbar UI
+    private Canvas healthbarCanvas;
+    private Slider healthbar;
+
 	void Start ()
     {
         // Set to full health at the beginning
         CurrHealth = TotalHealth;
+        healthbarCanvas = GetComponentInChildren<Canvas>();
+        healthbar = healthbarCanvas.GetComponentInChildren<Slider>();
+        healthbar.maxValue = TotalHealth;
+    }
+
+    void Update()
+    {
+        healthbar.value = CurrHealth;
     }
 
     /* Interface Implementation =================================*/
