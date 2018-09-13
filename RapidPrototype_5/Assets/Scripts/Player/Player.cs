@@ -36,6 +36,9 @@ public class Player : MonoBehaviour, IKillable
 	private TextMeshProUGUI defLabel;
 	private TextMeshProUGUI spdLabel;
 
+    [System.NonSerialized]
+    public int killCount;
+
     public Inventory inventory;
     private static bool created = false;
 
@@ -74,7 +77,7 @@ public class Player : MonoBehaviour, IKillable
 
         // Flag set to default
         m_canLightAttack = true;
-
+        killCount = 0;
     }
 	void Update()
 	{
@@ -133,6 +136,10 @@ public class Player : MonoBehaviour, IKillable
             if (killableObj != null)
             {
                 killableObj.TakeDamage(AttackDmg);
+                if (hitResult.transform.tag == "Enemy")
+                {
+                    killCount++;
+                }
             }
         }
         //yield return new WaitForSeconds(0.5f);

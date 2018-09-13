@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour, IKillable
 {
-
     [Header("Stats")]
     public float attackDamage;
     public float attackSpeed;
