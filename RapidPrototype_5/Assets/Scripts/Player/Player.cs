@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour, IKillable
 {
@@ -15,7 +15,9 @@ public class Player : MonoBehaviour, IKillable
 	public float Speed = 300f;
     public float AttackRange = 3f;
     public float AttackRadius = 1f;
-
+    public bool darkaura = false;
+    public GameObject effect;
+    public bool novillager = false;
     [Header("Config")]
     public LayerMask AttackingLayer;
 
@@ -71,6 +73,22 @@ public class Player : MonoBehaviour, IKillable
     }
 	void Update()
 	{
+
+        if (darkaura)
+        {
+            effect.SetActive(true);
+        }
+
+        if (Deffence >= 60)
+        {
+            darkaura = true;
+        }
+
+        if (AttackDmg >= 60)
+        {
+            novillager = true;
+        }
+
         CheckDeath();
 		if (Input.GetKeyDown(KeyCode.P))
 		{

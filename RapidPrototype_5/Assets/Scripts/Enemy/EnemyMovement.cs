@@ -118,7 +118,7 @@ public class EnemyMovement : MonoBehaviour, IKillable
     {
         //yield return new WaitForSeconds(attackSpeed);
         if (damagingplayer == true) {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(attackDamage);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(attackDamage - GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Deffence);
         }
         damagingplayer = false;
     }
