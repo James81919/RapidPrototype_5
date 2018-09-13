@@ -37,10 +37,15 @@ public class Player : MonoBehaviour, IKillable
 	private TextMeshProUGUI spdLabel;
 
     public Inventory inventory;
-
+    private static bool created = false;
 
     void Awake()
 	{
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+
         // Reference Player animator
         m_animator = GetComponentInChildren<Animator>();
 
@@ -177,6 +182,7 @@ public class Player : MonoBehaviour, IKillable
     {
         m_animator.SetBool("IsDead", true);
         StopAllCoroutines();
+        
     }
 
 
